@@ -1,12 +1,14 @@
-#include "test.h"
+#include "mapping.h"
 #include <iostream>
 
 int main()
 {
-    Test *test = new Test();
-    //test->testMovingObject();
-    //test->testReconstructMonitor();
-    //test->testReconstructMonitorHomography();
-    test->testReconstructLandmark();
+    Mapping *mapping = new Mapping();
+   	mapping->CreateMapPoints();
+   	mapping->MovingObjectTest();
+
+
+
+
     return 0;
 }

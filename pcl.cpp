@@ -1,11 +1,4 @@
 #include "pcl.h"
-#include <iostream>
-
-PCL::PCL()
-{
-	std::cout<<"Construct PCL"<<std::endl;
-}
-
 
 pcl::PointCloud<pcl::PointXYZ>::Ptr PCL::generatePointCloud(std::vector<cv::Point3d> pts3D)
 {

@@ -7,11 +7,6 @@
 using namespace cv;
 using namespace std;
 
-Utils::Utils()
-{
-    cout<<"Construct Utils!!"<<endl;
-}
-
 cv::Mat Utils::quaternion2RotM(double x, double y, double z, double w)
 {
     double xx = x*x;
