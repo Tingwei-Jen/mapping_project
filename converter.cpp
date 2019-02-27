@@ -76,6 +76,17 @@ cv::Mat Converter::toCvMat(const cv::Point3d &cvPoint)
     return cvMat.clone();
 }
 
+cv::Mat Converter::toCvMat(const cv::Point3f &cvPoint)
+{
+
+    cv::Mat cvMat(3,1,CV_32F);
+    cvMat.at<float>(0) = cvPoint.x; 
+    cvMat.at<float>(1) = cvPoint.y; 
+    cvMat.at<float>(2) = cvPoint.z; 
+
+    return cvMat.clone();
+}
+
 
 cv::Mat Converter::toCvSE3(const Eigen::Matrix<double,3,3> &R, const Eigen::Matrix<double,3,1> &t)
 {
@@ -142,5 +153,13 @@ cv::Point3d Converter::toCvPoint3d(const cv::Mat &cvVector)
 
     cv::Point3d v;
     v =  cv::Point3d(cvVector.at<double>(0), cvVector.at<double>(1), cvVector.at<double>(2));
+    return v;
+}
+
+cv::Point3f Converter::toCvPoint3f(const cv::Mat &cvVector)
+{
+
+    cv::Point3f v;
+    v =  cv::Point3f(cvVector.at<float>(0), cvVector.at<float>(1), cvVector.at<float>(2));
     return v;
 }

@@ -43,6 +43,7 @@ set(SOURCE_FILES
 	src/depth_filter.cpp
 	src/frame.cpp
 	src/mapping.cpp
+	src/map.cpp
 	src/optimizer.cpp
 	src/pcl.cpp
 	src/seed.cpp

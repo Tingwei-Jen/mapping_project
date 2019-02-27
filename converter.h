@@ -41,6 +41,7 @@ public:
     static cv::Mat toCvMat(const Eigen::Matrix3d &m);
     static cv::Mat toCvMat(const Eigen::Matrix<double,3,1> &m);
     static cv::Mat toCvMat(const cv::Point3d &cvPoint);
+    static cv::Mat toCvMat(const cv::Point3f &cvPoint);
     static cv::Mat toCvSE3(const Eigen::Matrix<double,3,3> &R, const Eigen::Matrix<double,3,1> &t);
 
     ///@}
@@ -61,6 +62,7 @@ public:
      */
     ///@{
     static cv::Point3d toCvPoint3d(const cv::Mat &cvVector);
+    static cv::Point3f toCvPoint3f(const cv::Mat &cvVector);
     ///@}   
 };
 #endif // CONVERTER_H

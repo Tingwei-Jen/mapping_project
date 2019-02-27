@@ -9,8 +9,8 @@ class Depth_Filter
 {
 public:
     //compute observed depth std
-    static void computeTau(const cv::Mat& T_ref_cur, const cv::Point3d& P, const double& px_error_angle, double& tau);
+    static void computeTau(const cv::Mat& T12, const cv::Point3f& P, const float& px_error_angle, float& tau);
     //gaussian&beta distribution fusion,  (mu, sigma2) combine with (x, tau2)(observation)
-    static void updateFilter(const double& x, const double& tau2, Seed* seed);   
+    static void updateFilter(const float& x, const float& tau2, Seed* seed);   
 };
 #endif //DEPTH_FILTER_H

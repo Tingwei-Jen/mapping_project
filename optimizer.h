@@ -2,6 +2,9 @@
 #ifndef OPTIMIZER_H
 #define OPTIMIZER_H
 
+#include "frame.h"
+#include "seed.h"
+
 //opencv
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
@@ -24,22 +27,7 @@
 class Optimizer
 {
 public:
-	enum solverType
-	{
-		DENSE,
-		CHOLMOD,
-		CSPARSE
-	};
-
-	Optimizer();
-	void BundleAdjustment(const std::vector<cv::Mat>& T_c_ws, const std::vector<cv::Point3f>& MapPoints, 
-						const std::vector<std::vector<cv::Point2d>> vertexss, const solverType& sType, const cv::Mat& K);
-
-private:
-
-
-
-
-
+	static void BundleAdjustment(cv::Mat& Tcw1, cv::Mat& Tcw2, std::vector<cv::Point3f>& pts3d, std::vector<cv::Point2f> pts1, std::vector<cv::Point2f> pts2, int nIterations = 10);
+	static void BundleAdjustment(std::vector<Frame*> Frames, std::vector<Seed*> Seeds, int nIterations = 10);
 };
 #endif //OPTIMIZER_H

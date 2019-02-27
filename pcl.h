@@ -14,8 +14,8 @@
 class PCL
 {
 public:
-	static pcl::PointCloud<pcl::PointXYZ>::Ptr generatePointCloud(std::vector<cv::Point3d> pts3D);
-	static pcl::PointCloud<pcl::PointXYZRGB>::Ptr generatePointCloudColor(std::vector<cv::Point3d> pts3D, std::vector<cv::Vec3b> pts_color);
+	static pcl::PointCloud<pcl::PointXYZ>::Ptr generatePointCloud(std::vector<cv::Point3f> pts3D);
+	static pcl::PointCloud<pcl::PointXYZRGB>::Ptr generatePointCloudColor(std::vector<cv::Point3f> pts3D, std::vector<cv::Vec3b> pts_color);
 
 	static boost::shared_ptr<pcl::visualization::PCLVisualizer> simpleVis (pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud);
 	static boost::shared_ptr<pcl::visualization::PCLVisualizer> rgbVis (pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud);
