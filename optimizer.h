@@ -3,11 +3,10 @@
 #define OPTIMIZER_H
 
 #include "frame.h"
-#include "seed.h"
+#include "sign.h"
 
 //opencv
 #include <opencv2/opencv.hpp>
-#include <opencv2/core/core.hpp>
 
 //g2o
 #include "g2o/core/sparse_optimizer.h"
@@ -28,6 +27,12 @@ class Optimizer
 {
 public:
 	static void BundleAdjustment(cv::Mat& Tcw1, cv::Mat& Tcw2, std::vector<cv::Point3f>& pts3d, std::vector<cv::Point2f> pts1, std::vector<cv::Point2f> pts2, int nIterations = 10);
-	static void BundleAdjustment(std::vector<Frame*> Frames, std::vector<Seed*> Seeds, int nIterations = 10);
+	static void BundleAdjustment(std::vector<Frame*> Frames, std::vector<Sign*> Signs, 
+								std::vector<cv::Mat>& New_poses, std::vector<cv::Point3f>& New_pts3D, int nIterations = 10);
+
+	static void LocalBundleAdjustment(Sign* sign, Frame* frame, Frame::SignLabel* label, std::vector<cv::Point3f>& pts3d, int nIterations = 10);
+	static void LocalBundleAdjustment(Sign* sign, int nIterations = 10);
+
+
 };
 #endif //OPTIMIZER_H

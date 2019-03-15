@@ -3,14 +3,15 @@
 #define SEED_H
 
 #include "frame.h"
-#include "trafficsigns.h"
 #include <opencv2/opencv.hpp>
 
 class Seed
 {
 public:
-	Seed(Frame* frame, cv::Point2f& pt, SignVerticeType Type, float depth_mean, float depth_min);
+	Seed(Frame* frame, cv::Point2f& pt, float depth_mean, float depth_min);
     cv::Point3f GetWorldPose();
+    cv::Point3f GetWorldPoseMax();    //!< mean + 3*sigma2
+    cv::Point3f GetWorldPoseMin();    //!< mean - 3*sigma2
 
 public:
 	static int counter;
@@ -23,8 +24,6 @@ public:
     float mu;                     //!< Mean of normal distribution.
     float z_range;                //!< Max range of the possible depth.
     float sigma2;                 //!< Variance of normal distribution.
-
-    SignVerticeType mType;
 };
 
 #endif //SEED_H

@@ -1,5 +1,5 @@
 cmake_minimum_required( VERSION 2.8 )
-project( mapping_project )
+project( Mapping )
 
 set( CMAKE_CXX_COMPILER "g++" )
 set( CMAKE_BUILD_TYPE "Release" )
@@ -19,6 +19,10 @@ add_definitions(${PCL_DEFINITIONS})
 
 #eigen
 include_directories( "/usr/include/eigen3" )
+
+#json
+include_directories( "/usr/local/include" )
+link_directories(/usr/local/lib)
 
 #g2o
 include_directories(/use/local/include)
@@ -44,16 +48,20 @@ set(SOURCE_FILES
 	src/frame.cpp
 	src/mapping.cpp
 	src/map.cpp
+	src/mappoint.cpp
 	src/optimizer.cpp
-	src/pcl.cpp
 	src/seed.cpp
+	src/sign.cpp
 	src/utils.cpp
+	src/visualize.cpp
 )
 
 add_executable(${PROJECT_NAME}  ${SOURCE_FILES})
 
 SET(G2O_LIBS g2o_core g2o_csparse_extension g2o_solver_cholmod g2o_solver_csparse g2o_solver_dense g2o_stuff g2o_types_sba g2o_types_icp g2o_types_sim3)
+SET(JSON_LIBS jsoncpp)
 
-target_link_libraries( ${PROJECT_NAME} ${OpenCV_LIBS} ${PCL_LIBRARIES} ${G2O_LIBS} ${CHOLMOD_LIBRARIES} ${CSPARSE_LIBRARIES} )
+
+target_link_libraries( ${PROJECT_NAME} ${OpenCV_LIBS} ${PCL_LIBRARIES} ${G2O_LIBS} ${CHOLMOD_LIBRARIES} ${CSPARSE_LIBRARIES} ${JSON_LIBS})
 
 

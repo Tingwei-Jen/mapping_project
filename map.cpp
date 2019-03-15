@@ -4,12 +4,12 @@ Map::Map()
 {
 }
 
-void Map::AddFrame(Frame* frame)
+void Map::AddSign(Sign* sign)
 {
-	mFrames.push_back(frame);
+	this->mSigns.push_back(sign);
 }
 
-void Map::AddSeed(Seed* seed)
+void Map::AddMappoint(MapPoint* mappoint)
 {
-	mSeeds.push_back(seed);
+	this->mMappoints.push_back(mappoint);
 }
