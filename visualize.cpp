@@ -8,22 +8,27 @@ void Visualize::VisualizeMap(Map* map)
 {
 
 	std::vector<Sign*> Signs = map->GetAllSigns();
-    std::vector<MapPoint*> MapPoints = map->GetAllMappoints();
-    
+    std::vector<Frame*> Frames = map->GetAllFrames();
+
     vector<Point3f> pts3D;
     vector<Vec3b> pts_color;
     vector<Mat> Rcws;
     vector<Mat> tcws;
 
     //Frames
+    for(int i=0; i<Frames.size(); i++)
+    {
+        pts3D.push_back(Converter::toCvPoint3f(Frames[i]->GetCameraCenter()));
+        pts_color.push_back(Vec3b(0,255,0));
+    }
+
+    //Sign ob Frames
     for(int i=0; i<Signs.size(); i++)
     {
         std::vector<Frame*> Frames = Signs[i]->GetObservationFrames();
 
         for(int j=0; j<Frames.size(); j++)
         {
-            pts3D.push_back(Converter::toCvPoint3f(Frames[j]->GetCameraCenter()));
-            pts_color.push_back(Vec3b(0,255,0));
             Rcws.push_back(Frames[j]->GetRotation());
             tcws.push_back(Frames[j]->GetTranslation());
         }
@@ -51,14 +56,15 @@ void Visualize::VisualizeMap(Map* map)
 
     }
 
-    //MapPoints
-    for(int i=0; i<MapPoints.size(); i++)
-    {
-        pts3D.push_back(MapPoints[i]->GetWorldPose());
-        pts_color.push_back(Vec3b(0,255,0));
-    }
-
-    
+    // //MapPoints
+    // for(int i=0; i<MapPoints.size(); i++)
+    // {
+    //     if( MapPoints[i]->GetSeed()->mu <1 )
+    //     {
+    //         pts3D.push_back(MapPoints[i]->GetWorldPose());
+    //         pts_color.push_back(Vec3b(0,255,0)); 
+    //     }
+    // }
 
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr = generatePointCloudColor(pts3D, pts_color);
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer = rgbVis(point_cloud_ptr, Rcws, tcws, pts_start, pts_end);

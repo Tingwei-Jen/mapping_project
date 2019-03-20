@@ -1,15 +1,12 @@
 #include "map.h"
-#include "mapping.h"
+#include "localmapping.h"
 #include "visualize.h"
-
-#include <iostream>
-using namespace std;
 
 int main()
 {
-
-	Mapping* mapping = new Mapping();
-	mapping->CreateMap2();
+	Map* map = new Map();
+	LocalMapping* mapping = new LocalMapping(map);
+	mapping->Run();
 	Visualize::VisualizeMap(mapping->GetMap());
     return 0;    
 }

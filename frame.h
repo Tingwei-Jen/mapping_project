@@ -8,7 +8,7 @@
 class Frame
 {
 public:
-    struct SignLabel
+    struct SignLabel //rectengle
     {
         std::vector<cv::Point2f> Vertices;
     };   
@@ -23,7 +23,7 @@ public:
     cv::Mat GetTranslation(){ return mtcw.clone(); }
     cv::Mat GetRotationInverse(){ return mRwc.clone(); }
     std::vector<SignLabel*> GetSignLabels(){ return mLabels; }
-    std::vector<cv::KeyPoint> GetKepPoints(){ return mKeyPoints; }
+    std::vector<cv::KeyPoint> GetKeyPoints(){ return mKeyPoints; }
     cv::Mat GetDescriptor(){ return mDescriptors; }
 
 public:

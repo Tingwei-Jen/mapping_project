@@ -34,5 +34,11 @@ public:
 	static void LocalBundleAdjustment(Sign* sign, int nIterations = 10);
 
 
+
+
+
+	static void BundleAdjustmentTwoFrames(Frame* frame1, Frame* frame2, std::vector<cv::Point3f>& pts3d, 
+										const std::vector<cv::Point2f>& pts1, const std::vector<cv::Point2f>& pts2, int nIterations = 10);
+
 };
 #endif //OPTIMIZER_H

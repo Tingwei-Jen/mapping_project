@@ -1,7 +1,7 @@
 #include "depth_filter.h"
 #include <boost/math/distributions/normal.hpp>
 
-void Depth_Filter::computeTau(const cv::Mat& T12, const cv::Point3f& P, const float& px_error_angle, float& tau)
+void Depth_Filter::ComputeTau(const cv::Mat& T12, const cv::Point3f& P, const float& px_error_angle, float& tau)
 {
 
     cv::Point3f t = cv::Point3f(T12.at<float>(0,3), T12.at<float>(1,3), T12.at<float>(2,3));
@@ -17,7 +17,7 @@ void Depth_Filter::computeTau(const cv::Mat& T12, const cv::Point3f& P, const fl
 
 }
 
-void Depth_Filter::updateFilter(const float& x, const float& tau2, Seed* seed)
+void Depth_Filter::UpdateFilter(const float& x, const float& tau2, Seed* seed)
 {
 
     float norm_scale = sqrt(seed->sigma2 + tau2);

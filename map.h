@@ -10,13 +10,16 @@ class Map
 {
 public:
 	Map();
+	void AddFrame(Frame* frame);
 	void AddSign(Sign* sign);
-	void AddMappoint(MapPoint* mappoint);
+	void AddMapPoint(MapPoint* mappoint);
 
+	std::vector<Frame*> GetAllFrames(){ return mFrames; }
 	std::vector<Sign*> GetAllSigns(){ return mSigns; }
 	std::vector<MapPoint*> GetAllMappoints(){ return mMappoints; }
 
 private:
+	std::vector<Frame*> mFrames;
 	std::vector<Sign*> mSigns;
 	std::vector<MapPoint*> mMappoints;
 
